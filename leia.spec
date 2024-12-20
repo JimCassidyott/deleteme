@@ -4,8 +4,8 @@
 a = Analysis(
     ['leia.py'],
     pathex=[],
-    binaries=[('d:/projects/deleteme/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.core.dll', 'azure/cognitiveservices/speech'), ('d:/projects/deleteme/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.audio.sys.dll', 'azure/cognitiveservices/speech'), ('d:/projects/deleteme/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.codec.dll', 'azure/cognitiveservices/speech'), ('d:/projects/deleteme/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.kws.dll', 'azure/cognitiveservices/speech'), ('d:/projects/deleteme/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.lu.dll', 'azure/cognitiveservices/speech')],
-    datas=[('files/*', 'files/'), ('.env', '.')],
+    binaries=[('d:/projects/leia-0.4.0/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.core.dll', 'azure/cognitiveservices/speech'), ('d:/projects/leia-0.4.0/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.audio.sys.dll', 'azure/cognitiveservices/speech'), ('d:/projects/leia-0.4.0/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.codec.dll', 'azure/cognitiveservices/speech'), ('d:/projects/leia-0.4.0/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.kws.dll', 'azure/cognitiveservices/speech'), ('d:/projects/leia-0.4.0/.venv/Lib/site-packages/azure/cognitiveservices/speech/Microsoft.CognitiveServices.Speech.extension.lu.dll', 'azure/cognitiveservices/speech')],
+    datas=[('files/*', 'files/'), ('files/images/*', 'files/images/'), ('.env', '.')],
     hiddenimports=['azure.cognitiveservices.speech'],
     hookspath=[],
     hooksconfig={},

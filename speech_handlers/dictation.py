@@ -10,7 +10,6 @@ import json
 import os
 import sys
 from .base import BaseSpeechHandler, ListeningState
-# from .rules impor
 import pyautogui
 from speech_handlers.helpers import is_indefinite_article
 
@@ -49,8 +48,7 @@ class DictationSpeechHandler(BaseSpeechHandler):
         special_chars_path = get_resource_path(os.path.join(files_dir, 'Specialcharacters.json'))
         with open(special_chars_path, 'r', encoding='utf-8') as f:
             self.special_chars = json.load(f)
-        
-    # @requires_state(ListeningState.LISTENING)
+    
     def handle_speech(self, text: str) -> str:
         """
         Handle incoming speech text by processing and executing the commands.
@@ -62,6 +60,12 @@ class DictationSpeechHandler(BaseSpeechHandler):
             str: The processed text, possibly modified by command processing
         """
         words = text.lower().split()
+
+        # Check for undo command
+        if len(words) == 2 and words[0].lower() in ["leah", "lea", "leeah", "leia", "laya", "layah", "leja", "lejah"] and words[1].lower() == "undo":
+            pyautogui.hotkey('ctrl', 'z')
+            return ""
+
         # If the user has instructed the computer to type a punctuation mark,
         # add it to the text. An acceptable phrase would be leah put a period.
         # The indefinite article is also handled here - the user can include it or not.
@@ -81,13 +85,11 @@ class DictationSpeechHandler(BaseSpeechHandler):
             try: 
                 if self.last_text.strip()[-1] in ['.', '!', '?']:
                     text = " " + text.capitalize()
-                if self.last_text[-1].isalnum()and text.strip()[-1] not in self.special_chars.values():
+                if self.last_text[-1].isalnum() and text.strip()[-1] not in [',', ':', ';'] and text.strip()[-1] not in self.special_chars.values():
                     text = " " + text
             except:
-                pass
+                text = text.capitalize()
                 
         pyautogui.typewrite(text)
         self.last_text = text
         return text
-    
- 

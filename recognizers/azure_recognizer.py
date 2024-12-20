@@ -90,6 +90,10 @@ class AzureRecognizer(BaseRecognizer):
         # Set up the callback
         self.speech_recognizer.recognized.connect(self._handle_result)
         
+        # State management
+        self.is_running = False
+        self.is_paused = False
+        
         # Load and add phrases from JSON
         self._load_phrases_from_json()
     
@@ -149,8 +153,14 @@ class AzureRecognizer(BaseRecognizer):
     
     def start(self) -> None:
         """Start continuous speech recognition."""
+        self.is_running = True
         self.speech_recognizer.start_continuous_recognition()
     
     def stop(self) -> None:
         """Stop speech recognition completely."""
+        self.is_running = False
         self.speech_recognizer.stop_continuous_recognition()
+
+    def set_paused(self, paused: bool) -> None:
+        """Set the paused state of the recognizer."""
+        self.is_paused = paused
